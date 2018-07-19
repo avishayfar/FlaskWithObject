@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "FlaskWithObject", "FlaskWithObject\FlaskWithObject.pyproj", "{DCB75392-6B37-4E3B-B1B3-B74D5EF9AD38}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "FlaskWithListObject", "FlaskWithListObject\FlaskWithListObject.pyproj", "{91019517-10E4-48A6-9A35-298554AE24BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DCB75392-6B37-4E3B-B1B3-B74D5EF9AD38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCB75392-6B37-4E3B-B1B3-B74D5EF9AD38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCB75392-6B37-4E3B-B1B3-B74D5EF9AD38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91019517-10E4-48A6-9A35-298554AE24BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91019517-10E4-48A6-9A35-298554AE24BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91019517-10E4-48A6-9A35-298554AE24BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91019517-10E4-48A6-9A35-298554AE24BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

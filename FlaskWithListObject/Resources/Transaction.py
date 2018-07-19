@@ -1,12 +1,13 @@
+
 from Model.Retail import SingleTransaction
 from flask_restful import fields, marshal_with, reqparse, Resource
 import datetime
 
 
-SingleTransaction1 = SingleTransaction('1',34.5, 'Yossi', datetime.date(2013, 11, 12))
-SingleTransaction2 = SingleTransaction('2',34.5, 'Yossi', datetime.date(2014, 11, 12))
-SingleTransaction3 = SingleTransaction('3',34.5, 'Yossi', datetime.date(2015, 11, 12))
-SingleTransaction4 = SingleTransaction('4',34.5, 'Yossi', datetime.date(2016, 11, 12))
+SingleTransaction1 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
+SingleTransaction2 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
+SingleTransaction3 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
+SingleTransaction4 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
 
 
 TRANSACTIONS = {
@@ -16,15 +17,11 @@ TRANSACTIONS = {
 }
 
 transaction_parser = reqparse.RequestParser()  
-transaction_parser.add_argument('id', required=True ,help='The id of the transaction')
-transaction_parser.add_argument('balancedue'  , type=int , required=True)
-transaction_parser.add_argument('customerName', required=True)
+transaction_parser.add_argument('parameterLst', required=True ,help='The id of the transaction', action='append')
 
 
 transaction_fields = {
-    'id': fields.String,
-    'customerName': fields.String,
-    'balancedue': fields.Integer,
+    'parameterLst': fields.List(fields.String),
 }
 
 
@@ -62,10 +59,13 @@ class TransactionList(Resource):
     @marshal_with(transaction_fields)
     def post(self):
         args = transaction_parser.parse_args()
-
+        parameterLst = args['parameterLst']
         transaction_id = int(max(TRANSACTIONS.keys()).lstrip('transaction')) + 1
         transaction_id = 'transaction%i' % transaction_id
-        TRANSACTIONS[transaction_id] = SingleTransaction()
-        return True,201
+
+        st = SingleTransaction(parameterLst)
+        TRANSACTIONS[transaction_id] = st
+        return TRANSACTIONS[transaction_id] 
+        #return True,203
 
 

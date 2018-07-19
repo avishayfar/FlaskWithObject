@@ -10,7 +10,6 @@ from Resources.Transaction import *
 app = Flask(__name__)
 api = Api(app)
 
-
 ##################
 
 api.add_resource(TransactionList, '/transactions')
@@ -18,7 +17,7 @@ api.add_resource(Transaction, '/transaction/<transaction_id>')
 
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5001)
+    app.run(debug=False, port=5002)
 
 
 
