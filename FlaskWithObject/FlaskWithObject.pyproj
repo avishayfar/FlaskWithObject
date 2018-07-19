@@ -32,12 +32,6 @@
     <Compile Include="Model\Retail.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Resources\Customer.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Resources\CustomerList.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Resources\Transaction.py">
       <SubType>Code</SubType>
     </Compile>
