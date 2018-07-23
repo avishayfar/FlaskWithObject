@@ -4,10 +4,9 @@ from flask_restful import fields, marshal_with, reqparse, Resource
 import datetime
 
 
-SingleTransaction1 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
-SingleTransaction2 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
-SingleTransaction3 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
-SingleTransaction4 = SingleTransaction(['physics', 'chemistry', '1997', '2000'])
+SingleTransaction1 = SingleTransaction(['NumberOfItems', 'TransactionTotal', 'NumberOfVoid', 'Tp1'] , [ 11, 1000 , 1, 0])
+SingleTransaction2 = SingleTransaction(['NumberOfItems', 'TransactionTotal', 'NumberOfVoid', 'Tp1'] , [ 22, 2000 , 2, 1])
+SingleTransaction3 = SingleTransaction(['NumberOfItems', 'TransactionTotal', 'NumberOfVoid', 'Tp1'] , [ 33, 3000 , 3, 0])
 
 
 TRANSACTIONS = {
@@ -21,8 +20,11 @@ transaction_parser.add_argument('parameterLst', required=True ,help='The id of t
 
 
 transaction_fields = {
-    'parameterLst': fields.List(fields.String),
+    'columnsNameLst': fields.List(fields.String),
+    'valuesLst': fields.List(fields.String),
 }
+
+
 
 
 def abort_if_todo_doesnt_exist(transaction_id):
