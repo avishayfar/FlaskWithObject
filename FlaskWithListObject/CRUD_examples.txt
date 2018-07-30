@@ -1,0 +1,72 @@
+
+
+Request
+
+GET   http://localhost:5002/transaction/transaction1
+
+Response
+
+{
+    "columnsNameLst": [
+        "NumberOfItems",
+        "TransactionTotal",
+        "NumberOfVoid",
+        "Tp1"
+    ],
+    "valuesLst": [
+        "11",
+        "1000",
+        "1",
+        "0"
+    ]
+}
+
+------------------------------------------
+
+GET   http://localhost:5002/transactions
+
+
+------------------
+
+ Request
+
+POST http://localhost:5002/transactions
+
+{
+    "columnsNameLst": [
+        "NumberOfItems",
+        "TransactionTotal",
+        "NumberOfVoid",
+        "Tp1"
+    ],
+    "valuesLst": [
+        "11",
+        "1000",
+        "1",
+        "0"
+    ]
+}
+
+Response
+
+{
+    "columnsNameLst": [
+        "NumberOfItems",
+        "TransactionTotal",
+        "NumberOfVoid",
+        "Tp1"
+    ],
+    "valuesLst": [
+        "131",
+        "10400",
+        "14",
+        "40"
+    ]
+}
+
+OR
+
+true
+
+-----------------------
+

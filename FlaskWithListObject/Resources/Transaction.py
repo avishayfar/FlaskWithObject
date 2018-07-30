@@ -16,7 +16,8 @@ TRANSACTIONS = {
 }
 
 transaction_parser = reqparse.RequestParser()  
-transaction_parser.add_argument('parameterLst', required=True ,help='The id of the transaction', action='append')
+transaction_parser.add_argument('columnsNameLst', required=True ,help='Feature Names', action='append')
+transaction_parser.add_argument('valuesLst', required=True ,help='Feature Values', action='append')
 
 
 transaction_fields = {
@@ -47,25 +48,28 @@ class Transaction(Resource):
     @marshal_with(transaction_fields)
     def put(self, transaction_id):
         args = transaction_parser.parse_args()
-        transaction = {'customerName': args['customerName']}
-        TRANSACTIONS[transaction_id] = task
-        return transaction, 201
+        columnsNameLst = args['columnsNameLst']
+        valuesLst = args['valuesLst']
+        st = SingleTransaction(columnsNameLst, valuesLst)
+        TRANSACTIONS[transaction_id] = st
+        return st, 201
 
 
 class TransactionList(Resource):
 
     @marshal_with(transaction_fields)
     def get(self):
-        return TRANSACTIONS['transaction1']  #TRANSACTIONS
+        return  TRANSACTIONS  #TRANSACTIONS['transaction1'] 
        
     @marshal_with(transaction_fields)
     def post(self):
         args = transaction_parser.parse_args()
-        parameterLst = args['parameterLst']
+        columnsNameLst = args['columnsNameLst']
+        valuesLst = args['valuesLst']
         transaction_id = int(max(TRANSACTIONS.keys()).lstrip('transaction')) + 1
         transaction_id = 'transaction%i' % transaction_id
 
-        st = SingleTransaction(parameterLst)
+        st = SingleTransaction(columnsNameLst, valuesLst)
         TRANSACTIONS[transaction_id] = st
         return TRANSACTIONS[transaction_id] 
         #return True,203
