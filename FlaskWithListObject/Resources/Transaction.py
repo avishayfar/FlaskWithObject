@@ -1,7 +1,9 @@
 
 from Model.Retail import SingleTransaction
 from flask_restful import fields, marshal_with, reqparse, Resource
+from flask import jsonify
 import datetime
+
 
 
 SingleTransaction1 = SingleTransaction(['NumberOfItems', 'TransactionTotal', 'NumberOfVoid', 'Tp1'] , [ 11, 1000 , 1, 0])
@@ -16,13 +18,13 @@ TRANSACTIONS = {
 }
 
 transaction_parser = reqparse.RequestParser()  
-transaction_parser.add_argument('columnsNameLst', required=True ,help='Feature Names', action='append')
-transaction_parser.add_argument('valuesLst', required=True ,help='Feature Values', action='append')
+transaction_parser.add_argument('ColumnsNames', required=True ,help='Feature Names', action='append')
+transaction_parser.add_argument('Values', required=True ,help='Feature Values', action='append')
 
 
 transaction_fields = {
-    'columnsNameLst': fields.List(fields.String),
-    'valuesLst': fields.List(fields.String),
+    'ColumnsNames': fields.List(fields.String),
+    'Values': fields.List(fields.String),
 }
 
 
@@ -61,17 +63,18 @@ class TransactionList(Resource):
     def get(self):
         return  TRANSACTIONS  #TRANSACTIONS['transaction1'] 
        
-    @marshal_with(transaction_fields)
+   # @marshal_with(transaction_fields)
     def post(self):
         args = transaction_parser.parse_args()
-        columnsNameLst = args['columnsNameLst']
-        valuesLst = args['valuesLst']
+        columnsNameLst = args['ColumnsNames']
+        valuesLst = args['Values']
         transaction_id = int(max(TRANSACTIONS.keys()).lstrip('transaction')) + 1
         transaction_id = 'transaction%i' % transaction_id
 
         st = SingleTransaction(columnsNameLst, valuesLst)
         TRANSACTIONS[transaction_id] = st
-        return TRANSACTIONS[transaction_id] 
-        #return True,203
+        #return TRANSACTIONS[transaction_id] 
+        return jsonify(0.7)
 
 
+         
