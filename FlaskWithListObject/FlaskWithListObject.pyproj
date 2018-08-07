@@ -17,7 +17,7 @@
     <Name>FlaskWithListObject</Name>
     <RootNamespace>FlaskWithListObject</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
-    <WebBrowserPort>5002</WebBrowserPort>
+    <WebBrowserPort>5003</WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

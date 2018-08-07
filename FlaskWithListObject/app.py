@@ -17,7 +17,7 @@ api.add_resource(Transaction, '/transaction/<transaction_id>')
 
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5002)
+    app.run(debug=False, port=5003)
 
 
 
